@@ -1,13 +1,16 @@
-package com.example.rrowllow;
+package com.example.rrowllow.repository;
 
 import com.example.rrowllow.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    Member findByUserid(String id);
-    Member findByEmail(String email);
-    Member findByNickname(String nickname);
+    Optional<Member> findByEmail(String email);
+    boolean existsByEmail(String email);
+
+
 }

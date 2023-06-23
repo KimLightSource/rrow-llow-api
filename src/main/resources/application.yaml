@@ -2,6 +2,20 @@ server:
   port: 8081
 
 spring:
+  profiles:
+    active:
+      - dev
+    group:
+      local:
+        - site-local
+        - db-local
+      dev:
+        - site-dev
+        - db-dev
+    include:
+      - db
+      - my-service
+      - site
 #  h2:
 #    console:
 #      enabled: true  # H2 Console? ???? ?? (H2 Console? H2 Database? UI? ????? ??)
@@ -22,7 +36,7 @@ spring:
     properties:
       hibernate:
         show-sql: true
-        ddl-auto: create
+        ddl-auto: validation
         format_sql: true
 
 logging:
@@ -30,3 +44,7 @@ logging:
     org.hibernate: info
     org.hibernate.SQL: debug
     org.hibernate.type: trace
+    com.tutorial: debug
+
+jwt:
+  secret:
