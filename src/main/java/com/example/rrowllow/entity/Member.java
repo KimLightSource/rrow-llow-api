@@ -2,16 +2,13 @@ package com.example.rrowllow.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
-@EqualsAndHashCode(callSuper=false)
-@NoArgsConstructor
+@Getter
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Member extends BaseEntity {
 
     @Id
@@ -26,9 +23,8 @@ public class Member extends BaseEntity {
     @NotEmpty
     private String password;
 
-    @Column
     @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private UserRole userRole;
 
     @Column
     private String nickname;
