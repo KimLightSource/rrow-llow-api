@@ -2,6 +2,7 @@ package com.example.rrowllow;
 
 import com.example.rrowllow.entity.Member;
 import com.example.rrowllow.entity.UserRole;
+import com.example.rrowllow.repository.MemberRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,13 +26,13 @@ class MemberRepositoryTest {
     void testMember() {
         //given
         Member member = new Member(
-                1, "jungWook", "1234", UserRole.ADMIN, null, null, null);
+                1, "jungWook", "1234", UserRole.ADMIN, null, "jungwook@exam.com", null);
 
         //when
         memberRepository.save(member);
 
         //then
-        assertEquals(memberRepository.findByUserid("jungWook"), member);
+        assertEquals(memberRepository.findByEmail("jungwook@exam.com"), member);
 
     }
 
