@@ -1,4 +1,4 @@
-package com.example.rrowllow.Service;
+package com.example.rrowllow.service;
 
 import com.example.rrowllow.entity.Member;
 import com.example.rrowllow.repository.MemberRepository;
