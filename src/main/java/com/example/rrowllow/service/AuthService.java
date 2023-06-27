@@ -1,4 +1,4 @@
-package com.example.rrowllow.Service;
+package com.example.rrowllow.service;
 
 import com.example.rrowllow.dto.MemberRequestDto;
 import com.example.rrowllow.dto.MemberResponseDto;
