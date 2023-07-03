@@ -17,7 +17,7 @@ public abstract class BaseEntity {
 
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime createDate; //생성일
+    private LocalDateTime createdDate; //생성일
 
     @LastModifiedDate
     private LocalDateTime lastModifiedDate; //최근 수정일
