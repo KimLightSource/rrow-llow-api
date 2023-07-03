@@ -1,7 +1,17 @@
+// queryDsl버전
+buildscript {
+	ext {
+		queryDslVersion = "5.0.0"
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.1.0'
 	id 'io.spring.dependency-management' version '1.1.0'
+
+	//querydsl 추가
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 group = 'com.example'
@@ -43,8 +53,46 @@ dependencies {
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
 	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
 	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+
+	// Querydsl 의존성
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+
 }
 
+//querydsl 사용 경로
+def querydslDir = "$buildDir/generated/querydsl"
+
+//querydsl 사용 설정
+querydsl {
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+
+// build 시 사용할 sourceSet
+sourceSets {
+	main.java.srcDir querydslDir
+}
+
+// compileClasspath와 annotationProcessor 상속
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
+}
+
+//feature/improve-all
+// querydsl 컴파일 시 사용할 옵션.
+compileQuerydsl {
+	options.annotationProcessorPath = configurations.querydsl
+}
+
+//feature/improve-all
+// QType 정리
+clean {
+	delete file(querydslDir)
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }
