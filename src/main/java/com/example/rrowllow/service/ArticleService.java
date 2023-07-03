@@ -4,6 +4,8 @@ import com.example.rrowllow.dto.PageResponseDto;
 import com.example.rrowllow.entity.Article;
 import com.example.rrowllow.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,5 +24,9 @@ public class ArticleService {
                 .stream()
                 .map(PageResponseDto::of)
                 .collect(Collectors.toList());
+    }
+
+    public Page<PageResponseDto> pageArticle(int pageNum) {
+        return articleRepository.searchAll(PageRequest.of(pageNum - 1, 20));
     }
 }
