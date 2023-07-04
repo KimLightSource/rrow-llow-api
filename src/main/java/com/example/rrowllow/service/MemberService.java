@@ -1,7 +1,7 @@
 package com.example.rrowllow.service;
 
 import com.example.rrowllow.config.SecurityUtil;
-import com.example.rrowllow.dto.MemberResponseDto;
+import com.example.rrowllow.dto.member.MemberResponseDto;
 import com.example.rrowllow.entity.Member;
 import com.example.rrowllow.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

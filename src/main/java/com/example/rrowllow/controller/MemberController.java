@@ -1,8 +1,8 @@
 package com.example.rrowllow.controller;
 
-import com.example.rrowllow.dto.ChangePasswordRequestDto;
-import com.example.rrowllow.dto.MemberRequestDto;
-import com.example.rrowllow.dto.MemberResponseDto;
+import com.example.rrowllow.dto.member.ChangePasswordRequestDto;
+import com.example.rrowllow.dto.member.MemberRequestDto;
+import com.example.rrowllow.dto.member.MemberResponseDto;
 import com.example.rrowllow.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

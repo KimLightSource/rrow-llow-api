@@ -1,6 +1,6 @@
 package com.example.rrowllow.repository;
 
-import com.example.rrowllow.dto.PageResponseDto;
+import com.example.rrowllow.dto.article.PageResponseDto;
 import com.example.rrowllow.entity.Article;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.example.rrowllow.controller;
 
-import com.example.rrowllow.dto.MemberRequestDto;
-import com.example.rrowllow.dto.MemberResponseDto;
+import com.example.rrowllow.dto.member.MemberRequestDto;
+import com.example.rrowllow.dto.member.MemberResponseDto;
 import com.example.rrowllow.dto.TokenDto;
 import com.example.rrowllow.service.AuthService;
 import lombok.RequiredArgsConstructor;

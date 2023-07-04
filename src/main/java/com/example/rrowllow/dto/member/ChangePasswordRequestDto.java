@@ -1,4 +1,4 @@
-package com.example.rrowllow.dto;
+package com.example.rrowllow.dto.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
