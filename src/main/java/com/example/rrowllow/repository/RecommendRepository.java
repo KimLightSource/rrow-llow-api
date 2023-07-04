@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RecommendRespository extends JpaRepository<Recommend, Long> {
-    List<Recommend> findAllbyArticle(Article article);
+public interface RecommendRepository extends JpaRepository<Recommend, Long> {
+    List<Recommend> findAllByArticle(Article article);
 }

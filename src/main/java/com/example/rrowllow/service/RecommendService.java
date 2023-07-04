@@ -7,7 +7,7 @@ import com.example.rrowllow.entity.Member;
 import com.example.rrowllow.entity.Recommend;
 import com.example.rrowllow.repository.ArticleRepository;
 import com.example.rrowllow.repository.MemberRepository;
-import com.example.rrowllow.repository.RecommendRespository;
+import com.example.rrowllow.repository.RecommendRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,11 +22,11 @@ import java.util.List;
 public class RecommendService {
     private final ArticleRepository articleRepository;
     private final MemberRepository memberRepository;
-    private final RecommendRespository recommendRespository;
+    private final RecommendRepository recommendRepository;
 
     public RecommendDto allRecommend(Long id) {
         Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("글이 없습니다."));
-        List<Recommend> recommends = recommendRespository.findAllbyArticle(article);
+        List<Recommend> recommends = recommendRepository.findAllByArticle(article);
         int size = recommends.size();
         if (size == 0) return RecommendDto.noOne();
 
@@ -50,7 +50,7 @@ public class RecommendService {
         Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("글이 없습니다."));
 
         Recommend recommend = new Recommend(member, article);
-        recommendRespository.save(recommend);
+        recommendRepository.save(recommend);
     }
 
     @Transactional
@@ -59,9 +59,9 @@ public class RecommendService {
                                         .orElseThrow(() -> new RuntimeException("로그인 유어 정보가 없습니다."));
         Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("글이 없습니다."));
 
-        Recommend recommend = recommendRespository.findAllbyArticle(article).stream().filter(r -> r.getMember().equals(member))
+        Recommend recommend = recommendRepository.findAllByArticle(article).stream().filter(r -> r.getMember().equals(member))
                                                  .findAny().orElseThrow(() -> new RuntimeException("추천이 없습니다"));
-        recommendRespository.delete(recommend);
+        recommendRepository.delete(recommend);
     }
 
 }

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 import static com.example.rrowllow.entity.QArticle.article;
 
 @RequiredArgsConstructor
+@Repository
 public class ArticleRepositoryImpl implements ArticleRepositoryCustom{
     private final JPAQueryFactory queryFactory;
 

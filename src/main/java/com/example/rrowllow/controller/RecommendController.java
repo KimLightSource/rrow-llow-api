@@ -15,7 +15,7 @@ public class RecommendController {
     private final RecommendService recommendService;
 
     @GetMapping("/list")
-    public ResponseEntity<RecommendDto> getRecommneds(@RequestParam(name = "id") Long id) {
+    public ResponseEntity<RecommendDto> getRecommends(@RequestParam(name = "id") Long id) {
         return ResponseEntity.ok(recommendService.allRecommend(id));
     }
 
