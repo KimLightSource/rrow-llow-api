@@ -21,10 +21,10 @@ public class Article extends BaseEntity{
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
-    @OneToMany(mappedBy = "article")
-    private List<Comment> comments = new ArrayList<Comment>();
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
+    private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     private List<Recommend> recommends = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
