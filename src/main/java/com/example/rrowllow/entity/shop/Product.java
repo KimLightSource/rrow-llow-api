@@ -41,4 +41,22 @@ public class Product extends BaseEntity {
     @Column
     private String imgPath;
 
+    public void changeDescription(String description) {
+        this.description = description;
+    }
+    public void changeSalePercentage(int salePercentage) {
+        this.sale = salePercentage;
+    }
+
+    public static Product registerProduct(String productName, Category category, int sale, int amount, int price, String description, String imgPath) {
+        Product product = new Product();
+        product.productName = productName;
+        product.category = category;
+        product.sale = sale;
+        product.amount = amount;
+        product.price = price;
+        product.description = description;
+        product.imgPath = imgPath;
+        return product;
+    }
 }
