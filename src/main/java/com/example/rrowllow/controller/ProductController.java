@@ -25,7 +25,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.registerProduct(productRequest));
     }
 
-    @PutMapping("/decription")
+    @PutMapping("/description")
     public ResponseEntity<ProductResponseDto> changeDecription(ProductRequestDto productRequest) {
         return ResponseEntity.ok(productService.changeDescription(productRequest));
     }
