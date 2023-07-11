@@ -1,4 +1,4 @@
-package com.example.rrowllow.service;
+package com.example.rrowllow.service.article;
 
 import com.example.rrowllow.config.SecurityUtil;
 import com.example.rrowllow.dto.article.CommentResponseDto;

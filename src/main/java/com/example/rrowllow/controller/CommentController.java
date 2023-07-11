@@ -3,7 +3,7 @@ package com.example.rrowllow.controller;
 import com.example.rrowllow.dto.MessageDto;
 import com.example.rrowllow.dto.article.CommentRequestDto;
 import com.example.rrowllow.dto.article.CommentResponseDto;
-import com.example.rrowllow.service.CommentService;
+import com.example.rrowllow.service.article.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

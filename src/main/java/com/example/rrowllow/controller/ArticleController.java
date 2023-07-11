@@ -5,7 +5,7 @@ import com.example.rrowllow.dto.article.ArticleResponseDto;
 import com.example.rrowllow.dto.article.ChangeArticleRequestDto;
 import com.example.rrowllow.dto.article.CreateArticleRequestDto;
 import com.example.rrowllow.dto.article.PageResponseDto;
-import com.example.rrowllow.service.ArticleService;
+import com.example.rrowllow.service.article.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
