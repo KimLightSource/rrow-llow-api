@@ -1,5 +1,6 @@
 package com.example.rrowllow.controller;
 
+import com.example.rrowllow.dto.MessageDto;
 import com.example.rrowllow.dto.shop.ProductRequestDto;
 import com.example.rrowllow.dto.shop.ProductResponseDto;
 import com.example.rrowllow.service.shop.ProductService;
@@ -26,7 +27,7 @@ public class ProductController {
     }
 
     @PutMapping("/description")
-    public ResponseEntity<ProductResponseDto> changeDecription(ProductRequestDto productRequest) {
+    public ResponseEntity<ProductResponseDto> changeDescription(ProductRequestDto productRequest) {
         return ResponseEntity.ok(productService.changeDescription(productRequest));
     }
 
@@ -35,5 +36,10 @@ public class ProductController {
         return ResponseEntity.ok(productService.changeSale(productRequest));
     }
 
+    @DeleteMapping("/")
+    public ResponseEntity<MessageDto> deleteProduct(@RequestParam(name = "productName") String productName) {
+        productService.deleteProduct(productName);
+        return ResponseEntity.ok(new MessageDto("상품 삭제 성공"));
+    }
 
 }

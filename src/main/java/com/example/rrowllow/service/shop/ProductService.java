@@ -40,10 +40,7 @@ public class ProductService {
         if (productRepository.existsByProductName(productRequestDto.getProductName())) {
             throw new RuntimeException("이미 등록되어 있는 상품명입니다.");
         }
-        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow();
-        if (member.getUserRole() != UserRole.ADMIN) {
-            throw new RuntimeException("관리자 계정이 아닙니다.");
-        }
+        checkAdmin();
         Category category = categoryRepository.findByCategory(productRequestDto.getCategory()).orElseThrow(() -> new RuntimeException("존재하지 않는 카테고리입니다."));
         Product product = Product.registerProduct(
                 productRequestDto.getProductName(),
@@ -60,6 +57,7 @@ public class ProductService {
 
     @Transactional
     public ProductResponseDto changeDescription(ProductRequestDto productRequestDto) {
+        checkAdmin();
         Product product = productRepository.findByProductName(productRequestDto.getProductName()).orElseThrow(() -> new RuntimeException("존재하지 않는 상품입니다."));
         product.changeDescription(productRequestDto.getDescription());
         return ProductResponseDto.of(product);
@@ -67,8 +65,23 @@ public class ProductService {
 
     @Transactional
     public ProductResponseDto changeSale(ProductRequestDto productRequestDto) {
+        checkAdmin();
         Product product = productRepository.findByProductName(productRequestDto.getProductName()).orElseThrow(() -> new RuntimeException("존재하지 않는 상품입니다."));
         product.changeSalePercentage(productRequestDto.getSale());
         return ProductResponseDto.of(product);
+    }
+
+    @Transactional
+    public void deleteProduct(String productName) {
+        checkAdmin();
+        Product product = productRepository.findByProductName(productName).orElseThrow(() -> new RuntimeException("존재하지 않는 상품입니다."));
+        productRepository.delete(product);
+    }
+
+    private void checkAdmin() {
+        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow();
+        if (member.getUserRole() != UserRole.ADMIN) {
+            throw new RuntimeException("관리자 계정이 아닙니다.");
+        }
     }
 }

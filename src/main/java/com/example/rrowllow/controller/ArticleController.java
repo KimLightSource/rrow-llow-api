@@ -48,6 +48,6 @@ public class ArticleController {
     @DeleteMapping("/one")
     public ResponseEntity<MessageDto> deleteArticle(@RequestParam(name = "id") Long id) {
         articleService.deleteArticle(id);
-        return ResponseEntity.ok(new MessageDto("Success"));
+        return ResponseEntity.ok(new MessageDto("게시글 삭제 성공"));
     }
 }
