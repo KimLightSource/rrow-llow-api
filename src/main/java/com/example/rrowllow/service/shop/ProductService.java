@@ -32,7 +32,7 @@ public class ProductService {
             throw new RuntimeException("등록된 상품이 없습니다.");
         }
         List<ProductResponseDto> productResponseDtos = products.stream().map(ProductResponseDto::of).toList();
-        return productResponseDtos.stream().sorted(Comparator.comparing(ProductResponseDto::getCreatedAt)).toList();
+        return productResponseDtos.stream().sorted(Comparator.comparing(ProductResponseDto::getCreatedDate)).toList();
     }
 
     @Transactional

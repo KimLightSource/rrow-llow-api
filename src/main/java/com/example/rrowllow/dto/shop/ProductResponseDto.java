@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ProductResponseDto {
-    private String createdAt;
+    private String createdDate;
     private String productName;
     private String description;
     private String img;
@@ -22,7 +22,7 @@ public class ProductResponseDto {
 
     public static ProductResponseDto of(Product product) {
         return ProductResponseDto.builder()
-                .createdAt(product.getCreatedDate().toString())
+                .createdDate(product.getCreatedDate().toString())
                 .productName(product.getProductName())
                 .description(product.getDescription())
                 .amount(product.getAmount())

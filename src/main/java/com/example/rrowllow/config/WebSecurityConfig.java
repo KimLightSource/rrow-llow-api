@@ -46,7 +46,7 @@ public class WebSecurityConfig {
                 .exceptionHandling((exception ->
                         exception.authenticationEntryPoint(jwtAuthenticationEntryPoint).accessDeniedHandler(jwtAccessDeniedHandler)))
                 .authorizeHttpRequests(request ->
-                        request.requestMatchers("/auth/**", "/article/**","/recommend/**", "/comment/**")
+                        request.requestMatchers("/auth/**", "/article/**","/recommend/**", "/comment/**","/docs/**")
                                .permitAll()
                                .anyRequest()
                                .authenticated()
